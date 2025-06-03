@@ -1,0 +1,41 @@
+<!-- templates/bank/transactions.html -->
+{% extends 'base.html' %}
+{% block title %}Transactions{% endblock %}
+{% block content %}
+<h2 class="mb-4">Transaction History</h2>
+<div class="table-responsive">
+    <table class="table table-striped align-middle">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Description</th>
+                <th class="text-end">Amount (₪)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tx in transactions.items %}
+                <tr>
+                    <td>{{ tx.timestamp.strftime('%Y-%m-%d %H:%M') }}</td>
+                    <td>{{ tx.description or tx.type.capitalize() }}</td>
+                    <td class="text-end">{{ '%.2f'|format(tx.amount) }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<nav aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+        {% if transactions.has_prev %}
+            <li class="page-item"><a class="page-link" href="{{ url_for('bank.transactions', page=transactions.prev_num) }}">Previous</a></li>
+        {% else %}
+            <li class="page-item disabled"><span class="page-link">Previous</span></li>
+        {% endif %}
+        <li class="page-item disabled"><span class="page-link">Page {{ transactions.page }} of {{ transactions.pages }}</span></li>
+        {% if transactions.has_next %}
+            <li class="page-item"><a class="page-link" href="{{ url_for('bank.transactions', page=transactions.next_num) }}">Next</a></li>
+        {% else %}
+            <li class="page-item disabled"><span class="page-link">Next</span></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endblock %}

@@ -1,0 +1,22 @@
+<!-- templates/admin/users.html -->
+{% extends 'base.html' %}
+{% block title %}Admin · Users{% endblock %}
+{% block content %}
+<h2 class="mb-4">User Management</h2>
+<div class="table-responsive">
+    <table class="table table-hover align-middle">
+        <thead><tr><th>ID</th><th>Username</th><th>Email</th><th>Balance</th><th>QR</th></tr></thead>
+        <tbody>
+            {% for u in users %}
+                <tr>
+                    <td>{{ u.id }}</td>
+                    <td>{{ u.username }}{% if u.is_admin %} <span class="badge bg-secondary">admin</span>{% endif %}</td>
+                    <td>{{ u.email }}</td>
+                    <td>₪{{ '%.2f'|format(u.balance) }}</td>
+                    <td><a href="{{ url_for('admin.user_qr', user_id=u.id) }}" target="_blank" class="btn btn-sm btn-outline-info">QR</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

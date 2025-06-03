@@ -1,0 +1,11 @@
+<!-- templates/bank/deposit.html -->
+{% extends 'base.html' %}
+{% block title %}Deposit{% endblock %}
+{% block content %}
+<h2 class="mb-3">Deposit Funds</h2>
+<form method="POST" class="col-md-6 col-lg-4">
+    {{ form.hidden_tag() }}
+    <div class="form-floating mb-3">{{ form.amount(class='form-control', placeholder='Amount') }}<label>₪ Amount</label></div>
+    {{ form.submit(class='btn btn-success') }}
+</form>
+{% endblock %}

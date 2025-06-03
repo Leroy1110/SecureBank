@@ -1,0 +1,11 @@
+<!-- templates/bank/withdraw.html -->
+{% extends 'base.html' %}
+{% block title %}Withdraw{% endblock %}
+{% block content %}
+<h2 class="mb-3">Withdraw Funds</h2>
+<form method="POST" class="col-md-6 col-lg-4">
+    {{ form.hidden_tag() }}
+    <div class="form-floating mb-3">{{ form.amount(class='form-control', placeholder='Amount') }}<label>₪ Amount</label></div>
+    {{ form.submit(class='btn btn-danger') }}
+</form>
+{% endblock %}

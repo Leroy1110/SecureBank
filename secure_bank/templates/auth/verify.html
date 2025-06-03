@@ -1,0 +1,16 @@
+<!-- templates/auth/verify.html -->
+{% extends 'base.html' %}
+{% block title %}2‑Step Verification{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-4 text-center">
+        <h1 class="h3 mb-3 fw-normal">Multi‑Factor Auth</h1>
+        <p class="small text-muted">Enter the 6‑digit code from your authenticator app</p>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="mb-3">{{ form.otp(class='form-control form-control-lg text-center', maxlength='6', placeholder='123456') }}</div>
+            {{ form.submit(class='w-100 btn btn-lg btn-primary') }}
+        </form>
+    </div>
+</div>
+{% endblock %}

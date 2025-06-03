@@ -1,0 +1,12 @@
+<!-- templates/auth/show_qr.html -->
+{% extends 'base.html' %}
+{% block title %}Scan QR{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4 text-center">
+        <h1 class="h4 mb-3">SecureBank – Two‑Factor Setup</h1>
+        <p class="small text-muted">Scan this QR with Google Authenticator (or similar) and then <a href="{{ url_for('auth.login') }}">login</a>.</p>
+        <img class="img-thumbnail" src="data:image/png;base64,{{ qr_code }}" alt="TOTP QR Code">
+    </div>
+</div>
+{% endblock %}

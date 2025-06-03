@@ -1,0 +1,33 @@
+/* static/styles.css */
+:root {
+    --sb-primary: #0d6efd;
+    --sb-dark-bg: #1a1d20;
+    --sb-dark-text: #f1f3f5;
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+[data-bs-theme="dark"] {
+    background-color: var(--sb-dark-bg);
+    color: var(--sb-dark-text);
+}
+[data-bs-theme="dark"] .card {
+    background-color: #2c3034;
+}
+
+/* Rounded cards */
+.card {
+    border-radius: 1rem;
+}
+
+.btn {
+    border-radius: .5rem;
+}
+
+/* Credit‑card badge */
+.card .credit-end {
+    letter-spacing: .2em;
+    font-family: 'Courier New', monospace;
+}

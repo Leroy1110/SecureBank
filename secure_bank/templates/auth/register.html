@@ -1,0 +1,19 @@
+<!-- templates/auth/register.html -->
+{% extends 'base.html' %}
+{% block title %}Register · SecureBank{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+        <h1 class="h3 mb-3 fw-normal text-center">Create Account</h1>
+        <form method="POST" novalidate>
+            {{ form.hidden_tag() }}
+            <div class="form-floating mb-3">{{ form.username(class='form-control', placeholder='Username') }}<label>Username</label></div>
+            <div class="form-floating mb-3">{{ form.email(class='form-control', placeholder='Email') }}<label>Email</label></div>
+            <div class="form-floating mb-3">{{ form.password(class='form-control', placeholder='Password') }}<label>Password</label></div>
+            <div class="form-floating mb-3">{{ form.confirm_password(class='form-control', placeholder='Confirm') }}<label>Confirm Password</label></div>
+            <div class="form-floating mb-3">{{ form.credit_card(class='form-control', placeholder='Credit Card') }}<label>Credit Card (16 digits)</label></div>
+            {{ form.submit(class='w-100 btn btn-lg btn-success') }}
+        </form>
+    </div>
+</div>
+{% endblock %}

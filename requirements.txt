@@ -1,0 +1,15 @@
+Flask
+Flask-SQLAlchemy
+Flask-Migrate
+Flask-Bcrypt
+Flask-Login
+Flask-WTF
+Flask-Limiter
+Flask-Talisman
+Flask-Mail
+cryptography
+pyotp
+qrcode
+python-dotenv
+email_validator
+Pillow

@@ -1,0 +1,31 @@
+<!-- templates/bank/dashboard.html -->
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h2 class="mb-4">Hello, {{ current_user.username }} 👋</h2>
+<div class="row g-4">
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title">Current Balance</h5>
+                <p class="display-6 fw-semibold">₪{{ '%.2f'|format(current_user.balance) }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-8">
+        <div class="card shadow-sm h-100">
+            <div class="card-body d-flex flex-column justify-content-around">
+                <div>
+                    <h6 class="fw-bold">Quick actions</h6>
+                    <a class="btn btn-outline-success me-2 mb-2" href="{{ url_for('bank.deposit') }}">Deposit</a>
+                    <a class="btn btn-outline-danger me-2 mb-2" href="{{ url_for('bank.withdraw') }}">Withdraw</a>
+                    <a class="btn btn-outline-primary mb-2" href="{{ url_for('bank.transfer') }}">Transfer</a>
+                </div>
+                {% if current_user.credit_card %}
+                    <p class="small text-muted mt-3">Linked card ending in •••• {{ current_user.credit_card[-4:] }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
