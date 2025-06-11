@@ -1,5 +1,4 @@
 from __future__ import annotations
-
 import os
 import logging
 import logging.handlers
@@ -101,10 +100,10 @@ CONFIGS = {
 
 def init_logger(app: Flask) -> None:
     """Attach rotating file handler for security audit logs."""
-    if not os.path.exists('logs'):
-        os.mkdir('logs')
+    if not os.path.exists('../logs'):
+        os.mkdir('../logs')
     handler = logging.handlers.RotatingFileHandler(
-        'logs/audit.log', maxBytes=256_000, backupCount=5
+        '../logs/audit.log', maxBytes=256_000, backupCount=5
     )
     handler.setFormatter(logging.Formatter(
         '%(asctime)s [%(levelname)s] %(message)s'
@@ -408,7 +407,7 @@ def create_app(config_name: str | None = None) -> Flask:
 
     # ───── shell context processor — for flask shell ─────────────────────
     @app.shell_context_processor
-    def shell_context():  # pragma: no cover
+    def shell_context():
         return {'db': db, 'User': User, 'Transaction': Transaction}
 
     return app
@@ -429,12 +428,9 @@ def create_qr_image(data: str):
     buf.seek(0)
     return buf
 
-# ---------------------------------------------------------------------------
-# CLI entry‑point
-# ---------------------------------------------------------------------------
 
 if __name__ == '__main__':
-    # `FLASK_ENV` or command‑line argument chooses config
+    # `FLASK_ENV` or command‑line argument chooses
     app_env = os.getenv('FLASK_ENV', 'development')
     app = create_app(app_env)
     with app.app_context():
