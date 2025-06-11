@@ -1,0 +1,13 @@
+# IDE settings
+.idea/
+
+# macOS system files
+.DS_Store
+
+# Virtual environments
+venv/
+.env
+.env.*
+
+# Flask migrations
+migrations/
